@@ -1,26 +1,422 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
-  <title>Next Atelier</title>
-  <link rel="stylesheet" href="stylesheets/main.css" type="text/css" media="all" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="google-site-verification" content="-pCSJq87temBFkwPaqE_DwXCjHtmnqc42gy9hdPhA-I" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Next Atelier — AI voor het bedrijfsleven</title>
+  <meta name="description" content="Next Atelier bouwt praktische AI-oplossingen voor het bedrijfsleven: procesoptimalisatie, data-inzichten en maatwerk AI-tools." />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+            'display': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'monospace'],
+          },
+          colors: {
+            'accent': '#1a1a1a',
+            'surface': '#fafafa',
+            'muted': '#6b7280',
+          },
+          animation: {
+            'float': 'float 8s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s ease-in-out infinite',
+            'slide-up': 'slideUp 0.6s ease-out',
+          },
+        }
+      }
+    }
+
+    // Define keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+
+  <style>
+    .glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #1a1a1a 0%, #4b5563 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .clean-bg {
+      background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+    }
+  </style>
 </head>
-<body>
-  <section class="container">
-    <h1>Next Atelier</h1>
+
+<body class="font-sans text-slate-900 bg-white antialiased">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <span class="font-semibold text-lg tracking-tight">Next Atelier</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#over" class="text-sm font-medium hover:text-accent transition-colors">Over</a>
+          <a href="#diensten" class="text-sm font-medium hover:text-accent transition-colors">Diensten</a>
+          <a href="#werkwijze" class="text-sm font-medium hover:text-accent transition-colors">Werkwijze</a>
+          <a href="#contact" class="text-sm font-medium hover:text-accent transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden clean-bg">
+    <!-- Subtle floating elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-32 left-16 w-1 h-1 bg-slate-400 rounded-full animate-float opacity-30"></div>
+      <div class="absolute top-48 right-24 w-1 h-1 bg-accent rounded-full animate-float opacity-20" style="animation-delay: 3s;"></div>
+      <div class="absolute bottom-40 left-1/3 w-1 h-1 bg-slate-500 rounded-full animate-float opacity-25" style="animation-delay: 6s;"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-6 text-center relative z-10 pt-16">
+      <div class="space-y-12">
+        <div class="space-y-6">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tight">
+            <span class="text-slate-900">Praktische</span><br/>
+            <span class="gradient-text">AI-oplossingen</span><br/>
+            <span class="text-slate-600 font-normal">voor bedrijven</span>
+          </h1>
+
+          <p class="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl mx-auto font-light">
+            We automatiseren processen, maken data toegankelijk en integreren AI naadloos in uw workflow—zonder complexiteit.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+          <a href="#contact" class="px-8 py-4 bg-accent text-white rounded-xl font-medium hover:bg-slate-800 transition-all duration-300 shadow-sm">
+            Neem contact op
+          </a>
+          <a href="#diensten" class="px-8 py-4 border border-slate-200 rounded-xl font-medium hover:bg-slate-50 hover:border-slate-300 transition-all duration-300">
+            Bekijk diensten
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- About Section -->
+  <section id="over" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8">
+          <div class="space-y-6">
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+              Waarom wij anders werken
+            </h2>
+
+            <p class="text-lg text-slate-600 leading-relaxed">
+              We focussen op praktische implementaties die direct waarde toevoegen.
+              Geen langdurige IT-projecten, maar bewezen oplossingen die binnen weken resultaat opleveren.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center">
+                <div class="w-2 h-2 bg-slate-600 rounded-full"></div>
+              </div>
+              <span class="text-slate-700 font-medium">Klein beginnen, snel valideren</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center">
+                <div class="w-2 h-2 bg-slate-600 rounded-full"></div>
+              </div>
+              <span class="text-slate-700 font-medium">Integratie met bestaande systemen</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center">
+                <div class="w-2 h-2 bg-slate-600 rounded-full"></div>
+              </div>
+              <span class="text-slate-700 font-medium">Continue optimalisatie</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clean metrics -->
+        <div class="relative">
+          <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
+            <div class="space-y-8">
+              <div class="text-center space-y-2">
+                <div class="text-4xl font-bold text-slate-900">60-80%</div>
+                <div class="text-sm text-slate-500">Tijdsbesparing per proces</div>
+              </div>
+
+              <div class="text-center space-y-2">
+                <div class="text-4xl font-bold text-slate-900">0€</div>
+                <div class="text-sm text-slate-500">Opstartkosten</div>
+              </div>
+
+              <div class="text-center space-y-2">
+                <div class="text-4xl font-bold text-slate-900">100%</div>
+                <div class="text-sm text-slate-500">Systeemintegratie</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="diensten" class="py-24 clean-bg">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center space-y-6 mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+          Wat we doen
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <div class="group bg-white rounded-2xl p-8 border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300">
+          <div class="space-y-6">
+            <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-xl font-semibold text-slate-900">Procesautomatisering</h3>
+              <p class="text-slate-600 leading-relaxed">
+                Tijdrovende taken zoals documentverwerking en rapportage worden geautomatiseerd met bewezen AI-technologie.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="group bg-white rounded-2xl p-8 border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300">
+          <div class="space-y-6">
+            <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-xl font-semibold text-slate-900">Data-inzichten</h3>
+              <p class="text-slate-600 leading-relaxed">
+                Complexe data wordt toegankelijk via natuurlijke taal. Stel vragen aan uw data alsof u een gesprek voert.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="group bg-white rounded-2xl p-8 border border-slate-100 hover:border-slate-200 hover:shadow-md transition-all duration-300">
+          <div class="space-y-6">
+            <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+              </svg>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-xl font-semibold text-slate-900">Systeemintegratie</h3>
+              <p class="text-slate-600 leading-relaxed">
+                AI-functionaliteit wordt geïntegreerd in uw CRM, ERP en andere tools zonder complexe migraties.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="werkwijze" class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center space-y-6 mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+          Hoe we samenwerken
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="bg-white rounded-2xl p-8 border border-slate-100">
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center">
+                <span class="text-white font-semibold">1</span>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-xl font-semibold text-slate-900">Analyse & planning</h3>
+              <p class="text-slate-600 leading-relaxed">
+                Inventarisatie van processen en identificatie van optimalisatiekansen in uw workflow.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white rounded-2xl p-8 border border-slate-100">
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center">
+                <span class="text-white font-semibold">2</span>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-xl font-semibold text-slate-900">Prototype & validatie</h3>
+              <p class="text-slate-600 leading-relaxed">
+                Ontwikkeling van een werkende demonstratie met echte data voor haalbaarheidsvalidatie.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white rounded-2xl p-8 border border-slate-100">
+          <div class="space-y-6">
+            <div class="flex items-center justify-between">
+              <div class="w-10 h-10 bg-slate-500 rounded-lg flex items-center justify-center">
+                <span class="text-white font-semibold">3</span>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-xl font-semibold text-slate-900">Implementatie & optimalisatie</h3>
+              <p class="text-slate-600 leading-relaxed">
+                Uitrol in productie, training van gebruikers en continue optimalisatie op basis van feedback.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24 bg-accent text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="space-y-8">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+          Klaar voor de volgende stap?
+        </h2>
+
+        <p class="text-xl leading-relaxed opacity-90 max-w-2xl mx-auto">
+          Ontdek hoe AI uw organisatie kan ondersteunen. We beginnen met een vrijblijvend gesprek.
+        </p>
+
+        <div class="pt-4">
+          <a href="#contact" class="inline-flex items-center px-8 py-4 bg-white text-accent rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300">
+            Plan kennismaking
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 clean-bg">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="space-y-8">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+          Neem contact op
+        </h2>
+
+        <p class="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          Heeft u vragen of wilt u de mogelijkheden verkennen? We staan klaar om uw situatie te bespreken.
+        </p>
+
+        <div class="pt-4">
+          <a href="mailto:info@nextatelier.com" class="inline-flex items-center space-x-3 px-8 py-4 bg-accent text-white rounded-xl font-semibold hover:bg-slate-800 transition-all duration-300">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            <span>info@nextatelier.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-16 border-t border-slate-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center space-y-4">
+        <div class="text-sm text-slate-500">
+          © 2025 Next Atelier • Made with AI
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-    ga('create', 'UA-55420634-1', 'auto');
-    ga('send', 'pageview');
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationName = 'slideUp';
+          entry.target.style.animationDuration = '0.6s';
+          entry.target.style.animationFillMode = 'both';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
   </script>
 </body>
 </html>
